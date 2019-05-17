@@ -24,13 +24,4 @@ public class EventController {
         return eventService.getById(id);
     }
 
-    @PostMapping
-    public void create(@RequestBody Event event) {
-        eventService.create(event);
-    }
-
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") String id) {
-        eventService.delete(id);
-    }
 }
