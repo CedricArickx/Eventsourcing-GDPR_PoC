@@ -56,7 +56,15 @@ public class CustomerService {
     }
 
     public void edit(Customer c, Long id) {
+        Customer old = getById(id);
+
         c.setId(id);
+        c.setFirstName(c.getFirstName() == null ? old.getFirstName() : c.getFirstName());
+        c.setLastName(c.getLastName() == null ? old.getLastName() : c.getLastName());
+        c.setDateOfBirth(c.getDateOfBirth() == null ? old.getDateOfBirth() : c.getDateOfBirth());
+        c.setPhoneNumber(c.getPhoneNumber() == null ? old.getPhoneNumber() : c.getPhoneNumber());
+        c.setEmail(c.getEmail() == null ? old.getEmail() : c.getEmail());
+
         customerDataRepository.save(c);
 
         c.setFirstName(null);
